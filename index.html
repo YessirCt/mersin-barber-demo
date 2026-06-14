@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liman Berber | Mersin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16241f;
+    --ink-light:#203a32;
+    --cream:#f6f1e6;
+    --cream-soft:#efe6d6;
+    --amber:#d98e3c;
+    --amber-dark:#b9742a;
+    --teal:#2f6b5e;
+    --charcoal:#1f2421;
+    --cream-text:#f3ece0;
+    --radius:14px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Work Sans', sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%;display:block;}
+
+  a{color:inherit;text-decoration:none;}
+
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--amber-dark);
+    margin-bottom:10px;
+    display:block;
+  }
+
+  .eyebrow.on-dark{color:var(--amber);}
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    line-height:1.1;
+    letter-spacing:-0.01em;
+  }
+
+  .section-heading{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+
+  .section-heading h2{
+    font-size:clamp(2rem, 4.5vw, 2.8rem);
+    margin-bottom:14px;
+  }
+
+  .section-heading p{
+    color:#4d564f;
+    font-size:1.02rem;
+  }
+
+  .section{
+    padding:90px 0;
+  }
+
+  /* ===== Barber-stripe divider (signature element) ===== */
+  .stripe-divider{
+    height:10px;
+    width:100%;
+    background:repeating-linear-gradient(
+      135deg,
+      var(--amber) 0 16px,
+      var(--cream) 16px 32px,
+      var(--teal) 32px 48px,
+      var(--cream) 48px 64px
+    );
+  }
+
+  /* ===== Buttons ===== */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:14px 28px;
+    border-radius:999px;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .2s ease, color .2s ease;
+  }
+
+  .btn:focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  .btn-primary{
+    background:var(--amber);
+    color:var(--ink);
+  }
+  .btn-primary:hover{
+    background:var(--amber-dark);
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(185,116,42,0.35);
+  }
+
+  .btn-outline{
+    background:transparent;
+    border-color:rgba(243,236,224,0.4);
+    color:var(--cream-text);
+  }
+  .btn-outline:hover{
+    border-color:var(--cream-text);
+    background:rgba(243,236,224,0.08);
+    transform:translateY(-2px);
+  }
+
+  .btn-outline-dark{
+    background:transparent;
+    border-color:rgba(31,36,33,0.25);
+    color:var(--charcoal);
+  }
+  .btn-outline-dark:hover{
+    border-color:var(--charcoal);
+    background:rgba(31,36,33,0.05);
+  }
+
+  /* ===== Nav ===== */
+  .nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    padding:18px 0;
+    transition:background .3s ease, padding .3s ease, box-shadow .3s ease;
+  }
+
+  .nav.scrolled{
+    background:rgba(22,36,31,0.92);
+    backdrop-filter:blur(8px);
+    padding:12px 0;
+    box-shadow:0 4px 24px rgba(0,0,0,0.18);
+  }
+
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.4rem;
+    color:var(--cream-text);
+    letter-spacing:0.01em;
+  }
+
+  .logo span{color:var(--amber);}
+
+  .nav-links{
+    display:flex;
+    gap:34px;
+    list-style:none;
+    font-size:0.95rem;
+    font-weight:500;
+  }
+
+  .nav-links a{
+    color:var(--cream-text);
+    opacity:0.85;
+    transition:opacity .2s ease, color .2s ease;
+    padding-bottom:4px;
+    border-bottom:1px solid transparent;
+  }
+  .nav-links a:hover{
+    opacity:1;
+    border-bottom-color:var(--amber);
+  }
+
+  .nav-right{display:flex;align-items:center;gap:18px;}
+
+  .nav-cta{
+    background:var(--amber);
+    color:var(--ink);
+    font-weight:600;
+    font-size:0.9rem;
+    padding:10px 22px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:background .2s ease, transform .15s ease;
+  }
+  .nav-cta:hover{background:var(--amber-dark);transform:translateY(-1px);}
+
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:var(--cream-text);
+    font-size:1.6rem;
+    cursor:pointer;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      linear-gradient(160deg, rgba(22,36,31,0.92) 0%, rgba(22,36,31,0.78) 55%, rgba(47,107,94,0.55) 100%),
+      url('https://images.unsplash.com/photo-1503951914875-65f37ac24c6c?auto=format&fit=crop&w=1600&q=70') center/cover no-repeat;
+    color:var(--cream-text);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:90px;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+
+  .hero h1{
+    font-size:clamp(3rem, 7vw, 5.4rem);
+    color:var(--cream-text);
+    margin-bottom:20px;
+  }
+
+  .hero h1 em{
+    font-style:italic;
+    color:var(--amber);
+  }
+
+  .hero p.lead{
+    font-size:1.1rem;
+    color:rgba(243,236,224,0.85);
+    max-width:480px;
+    margin-bottom:34px;
+  }
+
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+  }
+
+  .hero-meta{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-family:'Space Mono', monospace;
+    font-size:0.82rem;
+    color:rgba(243,236,224,0.7);
+    letter-spacing:0.04em;
+  }
+
+  .hero-meta span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .hero-meta strong{color:var(--amber);}
+
+  .hero-card{
+    background:rgba(246,241,230,0.06);
+    border:1px solid rgba(243,236,224,0.18);
+    border-radius:var(--radius);
+    padding:28px;
+    backdrop-filter:blur(6px);
+  }
+
+  .hero-card img{
+    border-radius:10px;
+    margin-bottom:18px;
+  }
+
+  .hero-card .ticket-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-family:'Space Mono', monospace;
+    font-size:0.85rem;
+    padding:6px 0;
+    border-bottom:1px dashed rgba(243,236,224,0.25);
+  }
+
+  .hero-card .ticket-line:last-child{border-bottom:none;}
+
+  .hero-card .ticket-title{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:12px;
+    color:var(--amber);
+  }
+
+  /* ===== Services ===== */
+  .services{background:var(--cream);}
+
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+
+  .service-card{
+    background:#fff;
+    border:1px solid rgba(31,36,33,0.06);
+    border-radius:var(--radius);
+    padding:34px 28px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+
+  .service-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 32px rgba(31,36,33,0.08);
+  }
+
+  .service-icon{
+    width:52px;height:52px;
+    border-radius:12px;
+    background:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+    color:var(--amber);
+  }
+
+  .service-card h3{
+    font-size:1.25rem;
+    margin-bottom:10px;
+  }
+
+  .service-card p{
+    color:#565f58;
+    font-size:0.95rem;
+  }
+
+  /* ===== Pricing (menu board signature) ===== */
+  .pricing{
+    background:var(--ink);
+    color:var(--cream-text);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .pricing::before{
+    content:"";
+    position:absolute;
+    top:-120px; right:-120px;
+    width:340px; height:340px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(217,142,60,0.18), transparent 70%);
+  }
+
+  .menu-board{
+    position:relative;
+    z-index:1;
+    max-width:760px;
+    margin:0 auto;
+    background:rgba(246,241,230,0.04);
+    border:1px solid rgba(243,236,224,0.16);
+    border-radius:var(--radius);
+    padding:48px clamp(20px, 6vw, 56px);
+  }
+
+  .menu-item{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(243,236,224,0.1);
+  }
+
+  .menu-item:last-child{border-bottom:none;}
+
+  .menu-name{
+    font-family:'Fraunces', serif;
+    font-size:1.1rem;
+    font-weight:600;
+    white-space:nowrap;
+  }
+
+  .menu-leader{
+    flex:1;
+    border-bottom:2px dotted rgba(243,236,224,0.3);
+    transform:translateY(-5px);
+  }
+
+  .menu-price{
+    font-family:'Space Mono', monospace;
+    font-size:1.05rem;
+    color:var(--amber);
+    white-space:nowrap;
+  }
+
+  .menu-note{
+    margin-top:28px;
+    font-size:0.85rem;
+    color:rgba(243,236,224,0.6);
+    text-align:center;
+  }
+
+  /* ===== Gallery ===== */
+  .gallery{background:var(--cream-soft);}
+
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-auto-rows:220px;
+    gap:18px;
+  }
+
+  .gallery-grid img{
+    width:100%;height:100%;
+    object-fit:cover;
+    border-radius:10px;
+    transition:transform .4s ease, filter .4s ease;
+  }
+
+  .gallery-item{
+    overflow:hidden;
+    border-radius:10px;
+  }
+
+  .gallery-item:hover img{
+    transform:scale(1.06);
+  }
+
+  .gallery-item.tall{grid-row:span 2;}
+
+  /* ===== Testimonials ===== */
+  .testimonials{background:var(--cream);}
+
+  .testimonials-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+
+  .testimonial-card{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:32px;
+    border:1px solid rgba(31,36,33,0.06);
+  }
+
+  .stars{
+    color:var(--amber);
+    font-size:1rem;
+    margin-bottom:14px;
+    letter-spacing:2px;
+  }
+
+  .testimonial-card p.quote{
+    font-size:1rem;
+    color:#3c4540;
+    margin-bottom:20px;
+    font-style:italic;
+  }
+
+  .testimonial-author{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .author-avatar{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--amber);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.05rem;
+  }
+
+  .author-meta strong{display:block;font-size:0.95rem;}
+  .author-meta span{font-size:0.82rem;color:#6b746e;}
+
+  /* ===== Map / Location ===== */
+  .map{background:var(--ink);color:var(--cream-text);}
+
+  .map-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:48px;
+    align-items:center;
+  }
+
+  .map-info h2{
+    font-size:clamp(1.9rem, 4vw, 2.6rem);
+    color:var(--cream-text);
+    margin-bottom:18px;
+  }
+
+  .map-info p{color:rgba(243,236,224,0.78);margin-bottom:24px;}
+
+  .info-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:30px;}
+
+  .info-list li{
+    display:flex;gap:14px;align-items:flex-start;
+    font-size:0.95rem;
+    color:rgba(243,236,224,0.9);
+  }
+
+  .info-list .ico{
+    color:var(--amber);
+    flex-shrink:0;
+    margin-top:2px;
+  }
+
+  .map-frame{
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid rgba(243,236,224,0.15);
+    height:380px;
+    position:relative;
+    display:block;
+    background:var(--cream-soft);
+  }
+
+  .map-illustration{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+
+  .map-pin{
+    transform-origin:300px 196px;
+    animation:pin-bob 3s ease-in-out infinite;
+  }
+
+  @keyframes pin-bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+  }
+
+  .map-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding:28px;
+    background:linear-gradient(to top, rgba(22,36,31,0.7) 0%, rgba(22,36,31,0) 55%);
+  }
+
+  .map-overlay-label{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--amber);
+    color:var(--ink);
+    font-weight:600;
+    font-size:0.92rem;
+    padding:12px 24px;
+    border-radius:999px;
+    transition:transform .2s ease, background .2s ease;
+  }
+
+  .map-frame:hover .map-overlay-label{
+    background:var(--amber-dark);
+    transform:translateY(-3px);
+  }
+
+  .map-frame:focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .map-pin{animation:none;}
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--charcoal);
+    color:rgba(243,236,224,0.7);
+    padding:56px 0 28px;
+  }
+
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:40px;
+  }
+
+  .footer-logo{
+    font-family:'Fraunces', serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--cream-text);
+    margin-bottom:14px;
+  }
+
+  .footer-logo span{color:var(--amber);}
+
+  .footer-grid p{font-size:0.9rem;max-width:320px;}
+
+  .footer-grid h4{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.85rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--cream-text);
+    margin-bottom:16px;
+  }
+
+  .footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:0.92rem;}
+
+  .footer-grid ul a{transition:color .2s ease;}
+  .footer-grid ul a:hover{color:var(--amber);}
+
+  .footer-bottom{
+    border-top:1px solid rgba(243,236,224,0.1);
+    padding-top:24px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:0.82rem;
+    color:rgba(243,236,224,0.5);
+  }
+
+  /* ===== Floating WhatsApp button ===== */
+  .whatsapp-float{
+    position:fixed;
+    bottom:24px; right:24px;
+    z-index:200;
+    width:60px; height:60px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25);
+    transition:transform .2s ease;
+  }
+  .whatsapp-float:hover{transform:scale(1.08);}
+  .whatsapp-float:focus-visible{outline:3px solid var(--amber);outline-offset:3px;}
+
+  /* ===== Scroll reveal ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-card{order:-1;max-width:420px;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .testimonials-grid{grid-template-columns:1fr;}
+    .map-grid{grid-template-columns:1fr;}
+    .map-frame{height:320px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid > div:first-child{grid-column:1 / -1;}
+  }
+
+  @media (max-width: 720px){
+    .nav-links, .nav-cta{display:none;}
+    .menu-toggle{display:block;}
+    .nav-links.open{
+      display:flex;
+      flex-direction:column;
+      position:absolute;
+      top:100%;
+      left:0; right:0;
+      background:rgba(22,36,31,0.97);
+      padding:24px;
+      gap:18px;
+      backdrop-filter:blur(8px);
+    }
+    .nav-links.open a{border-bottom:none;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;}
+    .services-grid{grid-template-columns:1fr;}
+    .section{padding:64px 0;}
+    .hero{padding-top:84px;}
+    .hero-meta{gap:18px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">Liman <span>Berber</span></a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#fiyatlar">Fiyatlar</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#yorumlar">Yorumlar</a></li>
+        <li><a href="#konum">Konum</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="https://wa.me/905001234567?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener">
+        Randevu Al
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow on-dark">Mersin Sahili · 1995'ten Beri</span>
+      <h1>Ustalık, <em>sahilin</em> tuzlu havasında.</h1>
+      <p class="lead">Mersin'in göbeğinde, geleneksel jilet tıraşından modern saç kesimine kadar her detayın özenle düşünüldüğü bir berber deneyimi. Randevulu, sakin ve samimi.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/905001234567?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener">
+          WhatsApp'tan Randevu Al
+        </a>
+        <a class="btn btn-outline" href="#fiyatlar">Fiyatları Gör</a>
+      </div>
+      <div class="hero-meta">
+        <span><strong>29</strong> yıllık tecrübe</span>
+        <span><strong>4.9★</strong> Google puanı</span>
+        <span>Pzt–Cmt <strong>09:00–20:00</strong></span>
+      </div>
+    </div>
+    <div class="hero-card reveal">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=70" alt="Berber koltuğunda tıraş yapılıyor">
+      <div class="ticket-title">Günün Önerisi</div>
+      <div class="ticket-line"><span>Saç + Sakal Bakımı</span><span>220₺</span></div>
+      <div class="ticket-line"><span>Sıcak Havlu ile Tamamlanır</span><span>~50 dk</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe-divider"></div>
+
+<!-- ===== SERVICES ===== -->
+<section class="section services" id="hizmetler">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Ustalık İşi</span>
+      <h2>Hizmetlerimiz</h2>
+      <p>Her müşteriye, saç ve sakal yapısına özel zaman ayırıyoruz. İşte salonumuzda sunduğumuz başlıca hizmetler.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">✂</div>
+        <h3>Saç Kesimi</h3>
+        <p>Yüz şeklinize ve saç yapınıza uygun, makas ve fön ile profesyonel kesim.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🪒</div>
+        <h3>Jilet Tıraşı</h3>
+        <p>Sıcak havlu ve geleneksel jilet ile ferahlatıcı, yakın sakal tıraşı.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🧔</div>
+        <h3>Sakal Şekillendirme</h3>
+        <p>Kontur, dizayn ve düzenli bakım ile sakalınıza kendi tarzınızı katın.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🌿</div>
+        <h3>Cilt Bakımı</h3>
+        <p>Tıraş sonrası yüz maskesi ve nemlendirme ile ciltinizi rahatlatıyoruz.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🧒</div>
+        <h3>Çocuk Tıraşı</h3>
+        <p>Küçük beyler için sabırlı, eğlenceli ve özenli bir tıraş deneyimi.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🤵</div>
+        <h3>Damat Paketi</h3>
+        <p>Düğün öncesi saç, sakal ve cilt bakımını içeren özel hazırlık paketi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section pricing" id="fiyatlar">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow on-dark">Menü</span>
+      <h2 style="color:var(--cream-text)">Fiyat Listesi</h2>
+      <p style="color:rgba(243,236,224,0.75)">Şeffaf fiyatlandırma, sürpriz yok. Tüm hizmetlerimiz randevu ile sunulur.</p>
+    </div>
+    <div class="menu-board reveal">
+      <div class="menu-item">
+        <span class="menu-name">Saç Kesimi</span>
+        <span class="menu-leader"></span>
+        <span class="menu-price">150₺</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Jilet Tıraşı</span>
+        <span class="menu-leader"></span>
+        <span class="menu-price">100₺</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Saç + Sakal</span>
+        <span class="menu-leader"></span>
+        <span class="menu-price">220₺</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Çocuk Tıraşı (12 yaş altı)</span>
+        <span class="menu-leader"></span>
+        <span class="menu-price">120₺</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Cilt Bakımı (Maske)</span>
+        <span class="menu-leader"></span>
+        <span class="menu-price">90₺</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Saç Boyama</span>
+        <span class="menu-leader"></span>
+        <span class="menu-price">250₺'den başlayan</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Damat Paketi</span>
+        <span class="menu-leader"></span>
+        <span class="menu-price">500₺</span>
+      </div>
+      <p class="menu-note">* Fiyatlar saç/sakal yapısına göre değişebilir. Kesin fiyat için bizi arayın veya WhatsApp'tan yazın.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="section gallery" id="galeri">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Salondan Kareler</span>
+      <h2>Galeri</h2>
+      <p>Salonumuzdan ve günlük çalışmalarımızdan kareler.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall reveal">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=500&q=70" alt="Berber aletleri" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=500&q=70" alt="Saç kesimi yapılıyor" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=500&q=70" alt="Sakal tıraşı" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=500&q=70" alt="Berber salonu içi" loading="lazy">
+      </div>
+      <div class="gallery-item tall reveal">
+        <img src="https://images.unsplash.com/photo-1635273051839-003bf06a8751?auto=format&fit=crop&w=500&q=70" alt="Tıraş sonrası bakım" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=500&q=70" alt="Berber koltuğu" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section testimonials" id="yorumlar">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Yorumlar</span>
+      <h2>Müşterilerimiz Ne Diyor?</h2>
+      <p>Mersin'in farklı semtlerinden müşterilerimizin deneyimleri.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Yıllardır buraya geliyorum. Hem ortam hem de ustalık gerçekten fark yaratıyor, sakal tıraşımı asla başka yerde yaptırmam."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div class="author-meta">
+            <strong>Ahmet Y.</strong>
+            <span>Yenişehir, Mersin</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Sıcak havlu hizmeti gerçekten fark yaratıyor. Randevu sistemi de çok pratik, beklemeden işlemim hallediliyor."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div class="author-meta">
+            <strong>Mehmet K.</strong>
+            <span>Mezitli, Mersin</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Çocuğumun ilk tıraşını burada yaptırdık, çok ilgili ve sabırlılardı. Kesinlikle herkese tavsiye ederim."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">C</div>
+          <div class="author-meta">
+            <strong>Caner D.</strong>
+            <span>Çamlıbel, Mersin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP / LOCATION ===== -->
+<section class="section map" id="konum">
+  <div class="container map-grid">
+    <div class="map-info reveal">
+      <span class="eyebrow on-dark">Konum</span>
+      <h2>Bizi Ziyaret Edin</h2>
+      <p>Mersin'in merkezinde, ulaşımı kolay bir noktada sizi bekliyoruz.</p>
+      <ul class="info-list">
+        <li><span class="ico">📍</span><span>Gazi Mahallesi, Atatürk Caddesi No:24, Mersin / Türkiye</span></li>
+        <li><span class="ico">🕒</span><span>Pazartesi – Cumartesi: 09:00 – 20:00<br>Pazar: Kapalı</span></li>
+        <li><span class="ico">📞</span><span>+90 500 123 45 67</span></li>
+      </ul>
+      <div class="hero-actions" style="margin-bottom:0;">
+        <a class="btn btn-primary" href="https://wa.me/905001234567?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener">
+          WhatsApp'tan Yazın
+        </a>
+        <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Mersin,Turkey" target="_blank" rel="noopener">
+          Google Haritalar'da Aç
+        </a>
+      </div>
+    </div>
+    <a class="map-frame reveal" href="https://www.google.com/maps/search/?api=1&query=Mersin,Turkey" target="_blank" rel="noopener" aria-label="Google Haritalar'da Liman Berber konumunu aç">
+      <svg class="map-illustration" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <rect width="600" height="380" fill="#efe6d6"/>
+        <path d="M0 0 H230 C200 60 260 120 220 190 C180 260 240 320 210 380 H0 Z" fill="#2f6b5e" opacity="0.85"/>
+        <path d="M230 0 C200 60 260 120 220 190 C180 260 240 320 210 380" stroke="#f6f1e6" stroke-width="2" fill="none" opacity="0.5"/>
+        <g stroke="#16241f" stroke-opacity="0.10" stroke-width="2">
+          <line x1="260" y1="0" x2="260" y2="380"/>
+          <line x1="360" y1="0" x2="360" y2="380"/>
+          <line x1="460" y1="0" x2="460" y2="380"/>
+          <line x1="560" y1="0" x2="560" y2="380"/>
+          <line x1="230" y1="60" x2="600" y2="60"/>
+          <line x1="220" y1="150" x2="600" y2="150"/>
+          <line x1="220" y1="240" x2="600" y2="240"/>
+          <line x1="220" y1="320" x2="600" y2="320"/>
+        </g>
+        <g stroke="#d98e3c" stroke-opacity="0.45" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round">
+          <line x1="230" y1="190" x2="600" y2="190"/>
+          <line x1="320" y1="0" x2="320" y2="380"/>
+        </g>
+        <g class="map-pin">
+          <ellipse cx="300" cy="196" rx="22" ry="6" fill="#16241f" opacity="0.12"/>
+          <path d="M300 90c-19 0-34 15-34 34 0 25 34 62 34 62s34-37 34-62c0-19-15-34-34-34z" fill="#d98e3c" stroke="#16241f" stroke-width="2"/>
+          <circle cx="300" cy="124" r="12" fill="#16241f"/>
+        </g>
+      </svg>
+      <div class="map-overlay">
+        <span class="map-overlay-label">Google Haritalar'da Aç ↗</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Liman <span>Berber</span></div>
+        <p>1995'ten beri Mersin sahilinde, geleneksel ustalıkla modern tıraş deneyimi sunuyoruz.</p>
+      </div>
+      <div>
+        <h4>Hızlı Linkler</h4>
+        <ul>
+          <li><a href="#hizmetler">Hizmetler</a></li>
+          <li><a href="#fiyatlar">Fiyatlar</a></li>
+          <li><a href="#galeri">Galeri</a></li>
+          <li><a href="#yorumlar">Yorumlar</a></li>
+          <li><a href="#konum">Konum</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>İletişim</h4>
+        <ul>
+          <li>Gazi Mah. Atatürk Cad. No:24, Mersin</li>
+          <li>+90 500 123 45 67</li>
+          <li>info@limanberber.com.tr</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Liman Berber. Tüm hakları saklıdır.</span>
+      <span>Mersin, Türkiye</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+<a class="whatsapp-float" href="https://wa.me/905001234567?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp'tan yazın">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2C8.28 2 2 8.28 2 16c0 2.74.78 5.3 2.13 7.47L2.5 29.5l6.2-1.6A13.9 13.9 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2Z" fill="#fff"/>
+    <path d="M16 4.4c6.4 0 11.6 5.2 11.6 11.6S22.4 27.6 16 27.6c-2.1 0-4.06-.56-5.76-1.55l-.41-.24-4.2 1.08 1.12-4.09-.27-.43A11.5 11.5 0 0 1 4.4 16C4.4 9.6 9.6 4.4 16 4.4Z" fill="#25D366"/>
+    <path d="M12.1 9.6c-.27-.6-.55-.61-.81-.62h-.69c-.24 0-.62.09-.95.45-.33.36-1.26 1.23-1.26 3 0 1.77 1.28 3.48 1.46 3.72.18.24 2.46 3.95 6.07 5.38 3 .12 3.62-.34 4.27-.4.65-.06 2.08-.85 2.37-1.67.29-.82.29-1.52.2-1.67-.09-.15-.34-.24-.71-.42-.37-.18-2.16-1.06-2.5-1.18-.33-.12-.57-.18-.81.18-.24.36-.93 1.18-1.14 1.42-.21.24-.42.27-.78.09-.36-.18-1.53-.56-2.91-1.8-1.08-.96-1.81-2.15-2.02-2.51-.21-.36-.02-.55.16-.73.18-.18.4-.46.6-.7.2-.24.27-.4.4-.66.13-.27.07-.49-.04-.73-.11-.24-.69-1.67-.96-2.15Z" fill="#fff"/>
+  </svg>
+</a>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+    menuToggle.textContent = isOpen ? '✕' : '☰';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.textContent = '☰';
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
